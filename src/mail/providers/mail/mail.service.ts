@@ -11,7 +11,7 @@ export class MailService {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const result = await this.mailerService.sendMail({
         to: user.email,
-        from: "onboarding team <support@nestjs-blog.com>",
+        from: "onboarding team mail message <support@nestjs-blog.com>",
         subject: "Welcome to NestJS!",
         template: "./welcome",
         context: {
