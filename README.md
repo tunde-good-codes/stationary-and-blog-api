@@ -1,98 +1,248 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+---
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# 📘 **NestJS Stationary and Blog API – Production Ready Endpoints**
 
-## Description
+A fully-featured, production-grade **Blog API** built with **NestJS**, following clean architecture, modular design, and enterprise backend best practices.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Project setup
+## 🚀 **Features**
 
-```bash
-$ npm install
+### 🧩 Core Features
+
+* User registration, login & logout
+* JWT Authentication (Access + Refresh Tokens)
+* Password hashing using **bcrypt**
+* Role-based Authorization (Admin/User)
+* Blog Posts CRUD (Create, Read, Update, Delete)
+* Comment system (if implemented)
+* Pagination, filtering, search
+
+### 📦 File Uploads & Media
+
+* Image uploads using **Multer**
+* Media storage via **Cloudinary**
+* Automatic MIME/type filtering
+* Secure URL return and metadata
+
+### 📧 Email System
+
+* Integrated email service using **Mailtrap** (via SMTP)
+* EJS templating (`welcome.ejs`)
+* Resend welcome email on registration
+* Configurable template directory via Nest CLI asset bundling
+
+### 🗄️ Database & Persistence
+
+This project is designed to work with multiple databases:
+
+* **PostgreSQL** via TypeORM
+* **MongoDB** capability (if modules included)
+* **Optional Prisma support** included in dependencies
+* Entity & Schema validation via class-validator
+
+### 🧰 Utilities & Best Practices
+
+* DTO Validation (class-validator + class-transformer)
+* Global pipes and interceptors
+* Custom exceptions & filters
+* Rate limiting ready (Nest Throttler)
+* Config module with `.env` validation using Joi
+
+### 🧪 Testing
+
+* Unit Tests (Jest)
+* e2e Tests (Supertest)
+* Test watchers and full coverage reporting
+
+### 📚 API Documentation
+
+* Complete **Swagger documentation**
+* Auto-generated API schemas from DTOs
+
+---
+
+## 🛠️ **Tech Stack**
+
+| Category          | Technology                            |
+| ----------------- | ------------------------------------- |
+| Backend Framework | **NestJS**                            |
+| Language          | **TypeScript**                        |
+| Authentication    | Passport + JWT                        |
+| ORM               | TypeORM / Prisma (optional)           |
+| Database          | PostgreSQL / MongoDB                  |
+| Media Storage     | Cloudinary                            |
+| File Uploads      | Multer (+ cloudinary storage)         |
+| Email             | @nestjs-modules/mailer, EJS, Mailtrap |
+| Tests             | Jest, Supertest                       |
+| Dev Tools         | ESLint, Prettier, Compodoc            |
+
+---
+
+# 📂 **Project Structure**
+
+```
+src/
+├── auth/
+│   ├── auth.controller.ts
+│   ├── auth.service.ts
+│   ├── strategies/
+│   └── guards/
+│
+├── user/
+│   ├── user.controller.ts
+│   ├── user.service.ts
+│   └── user.entity.ts
+│
+├── post/
+│   ├── post.controller.ts
+│   ├── post.service.ts
+│   └── post.entity.ts
+│
+├── mail/
+│   ├── providers/
+│   │   └── mail.service.ts
+│   └── templates/
+│       └── welcome.ejs
+│
+├── common/
+│   ├── dto/
+│   ├── exceptions/
+│   ├── guards/
+│   ├── interceptors/
+│   └── filters/
+│
+├── config/
+│   ├── app.config.ts
+│   ├── mail.config.ts
+│   └── cloudinary.config.ts
+│
+├── main.ts
+└── app.module.ts
 ```
 
-## Compile and run the project
+---
+
+# ⚙️ **Installation & Setup**
+
+### 👉 1. Clone the repository
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone https://github.com/tunde-good-codes/stationary-and-blog-api.git
+cd blog-api-nestjs
 ```
 
-## Run tests
+### 👉 2. Install dependencies
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm install
 ```
 
-## Deployment
+### 👉 3. Create environment file
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Create `.env` at the project root:
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+```
+# App
+PORT=3000
+NODE_ENV=development
+
+
+# JWT
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRES_IN=1d
+JWT_REFRESH_SECRET=your_refresh_secret
+JWT_REFRESH_EXPIRES_IN=7d
+
+# Cloudinary
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+
+# Mailtrap SMTP
+MAIL_HOST=smtp.mailtrap.io
+MAIL_USER=your_user
+MAIL_PASS=your_pass
+```
+
+---
+
+# 🗃️ **Running the App**
+
+### Development
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm run start:dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Production build
 
-## Resources
+```bash
+npm run build
+npm run start:prod
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+### Testing
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+npm run test
+npm run test:e2e
+npm run test:cov
+```
 
-## Support
+---
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+# 📑 **API Documentation (Swagger)**
 
-## Stay in touch
+Once the app is running:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+➡️ **[http://localhost:3000/api/docs](http://localhost:3000/api/docs)**
 
-## License
+Generated automatically from your DTOs, controllers, and decorators.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
+
+# 📧 **Email Templates (EJS)**
+
+Your EJS templates are located at:
+
+```
+src/mail/templates/welcome.ejs
+```
+
+And bundled to:
+
+```
+dist/mail/templates/welcome.ejs
+```
+
+---
+
+# 🧩 **Scripts You Should Know**
+
+| Script              | Purpose                                  |
+| ------------------- | ---------------------------------------- |
+| `npm run start:dev` | Start dev server with watch mode         |
+| `npm run build`     | Compile project                          |
+| `npm run lint`      | Lint & auto-fix                          |
+| `npm run test`      | Run unit tests                           |
+| `npm run test:e2e`  | End-to-end tests                         |
+| `npm run test:cov`  | Coverage report                          |
+| `npm run doc`       | Auto-generate documentation via Compodoc |
+
+---
+
+# 🙌 **Author**
+
+**Tunde Fadipe**
+Frontend & Backend Engineer (NestJS, TypeScript, React, Next.js)
+
+---
+
+# 📄 **License**
+
+UNLICENSED – for personal learning and portfolio use.
+
+---
+
