@@ -22,9 +22,13 @@ export class CreateUserProvider {
         where: { email: createUserDto.email }
       });
     } catch (e) {
-      throw new RequestTimeoutException(`unable to perform user creation: ${e.message}`, {
-        description: "big server error"
-      });
+      throw new RequestTimeoutException(
+        `this service
+        unable to perform user creation: ${e.message}`,
+        {
+          description: "big server error"
+        }
+      );
     }
     if (existingUser) {
       throw new BadRequestException("this email already registered");
